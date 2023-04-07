@@ -15,7 +15,6 @@ const {  } = require('../libs/utils');
 
 const { hashText, HashToText
 } = require('../libs/bcrypt_helper');
-const Customer = require('../models/customer');
 const JWT = require('jsonwebtoken');
 const defaultOpts = {};
 class CustomerService {
@@ -36,7 +35,11 @@ class CustomerService {
     this.repoOrder = repoOrder;
     this.repoCart = repoCart;
   }
-
+ /**
+     * 
+     * @param {String} data 
+     * @returns {Promise< Customer | null | undefined>}
+     */
   async create(data) {
     const coll = await this.repo.findCustomer(
       {

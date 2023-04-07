@@ -45,6 +45,11 @@ class BrandService {
         this.repo = repo;
     }
 
+    /**
+     * 
+     * @param {String} data 
+     * @returns {Promise<Brand | null | undefined>}
+     */
     async create(data) {
         data.uid = ulid();
         const output = await this.repo.createOne(data);
@@ -52,7 +57,7 @@ class BrandService {
     }
 
     async updateBrand(msg) {
-        const { uid } = msg;
+        const {  } = msg;
         const findBrand = await this.repo.findOne('uid');
         if (!findBrand) {
             throw ErrorModel.initWithParams({
@@ -89,7 +94,7 @@ class BrandService {
     }
 
     async updateStatusBrand(msg) {
-        const { uid } = msg;
+        const {  } = msg;
         const findBrand = await this.repo.findOne('uid');
         if (!findBrand) {
             throw ErrorModel.initWithParams({

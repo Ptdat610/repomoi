@@ -12,7 +12,7 @@ const { defaultsDeep } = require('lodash');
 const { ulid } = require('ulid');
 const { ErrorModel } = require('../models');
 const { ERROR, ROUTE, LOGS } = require('../constants');
-const { Utils } = require('../libs/utils');
+const {  } = require('../libs/utils');
 const defaultOpts = {};
 class CartService {
   /**
@@ -43,6 +43,11 @@ class CartService {
     this.repoOrder = repoOrder;
     this.repoUser = repoUser;
   }
+    /**
+     * 
+     * @param {String} data 
+     * @returns {Promise< Cart | undefined>}
+     */
   async create(data) {
     data.uid = ulid();
     const output = await this.repo.createOne(data);
