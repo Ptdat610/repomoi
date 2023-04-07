@@ -1,6 +1,6 @@
 'use strict';
 /**
- * @typedef {import("./policy")} PolicyService
+ * @typedef {import("./Policy")} PolicyService
  * @typedef {import("../data/customer_repository")} customerRepository
  * @typedef {import("../data/product_repository")} productRepository
  * @typedef {import("../data/order_repository")} orderRepository
@@ -9,12 +9,11 @@
 const { defaultsDeep } = require('lodash');
 const { ulid } = require('ulid');
 const { ErrorModel } = require('../models');
-const { ERROR, ROUTE, LOGS } = require('../constants');
-const { Utils } = require('../libs/utils');
-const moment = require('moment');
-const {
-  hashText,
-  HashToText,
+const { ERROR } = require('../constants');
+const {  } = require('../libs/utils');
+
+
+const { hashText, HashToText
 } = require('../libs/bcrypt_helper');
 const Customer = require('../models/customer');
 const JWT = require('jsonwebtoken');
@@ -134,7 +133,6 @@ class CustomerService {
         message: 'Tên đăng nhập hoặc mật khẩu không đúng.',
       });
     }
-    //3. Check status ddddddd
     if (customer.status === false) {
       throw ErrorModel.initWithParams({
         ...ERROR.VALIDATION.INVALID_REQUEST,

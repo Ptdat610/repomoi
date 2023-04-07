@@ -1,6 +1,6 @@
 'use strict';
 /**
- * @typedef {import("./policy")} PolicyService
+ * @typedef {import("./Policy")} PolicyService
  * @typedef {import("../data/role_repository")} roleRepository
  */
 const { defaultsDeep } = require('lodash');

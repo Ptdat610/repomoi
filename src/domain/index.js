@@ -15,11 +15,11 @@ const CustomerService = require('./customer');
 const RoleService = require('./role');
 const ProductTypeService = require('./productType');
 const BrandService = require('./brand');
-const PolicyService = require('./policy');
+const PolicyService = require('./Policy');
 const UserService = require('./user');
 const CartService = require('./cart');
-const OrderService = require('./order');
-const MomoPaymentService = require('./momo');
+const OrderService = require('./Order');
+const MomoPaymentService = require('./Momo');
 const { redisClient, axios } = require('../infrastructures');
 
 const policyService = new PolicyService({}, redisClient);
