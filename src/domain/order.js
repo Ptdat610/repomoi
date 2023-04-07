@@ -10,14 +10,13 @@
 const { defaultsDeep } = require('lodash');
 const { ulid } = require('ulid');
 const { ErrorModel } = require('../models');
-const { ERROR, ROUTE, LOGS } = require('../constants');
+const { ERROR } = require('../constants');
 const { Utils } = require('../libs/utils');
 const moment = require('moment');
 const paypal = require('paypal-rest-sdk');
 const defaultOpts = {};
 class OrderService {
   /**
-   *
    * @param {*} opts
    * @param {PolicyService} policy
    * @param {orderRepository} repo
