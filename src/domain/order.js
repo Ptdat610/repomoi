@@ -149,8 +149,9 @@ class OrderService {
     const output = await this.repo.updateOrder(msg);
     return output;
   }
+
   async readyToShipOrder(msg) {
-    const { uid, data } = msg;
+    const { uid } = msg;
     const findOrder = await this.repo.findOne('uid', uid);
     if (!findOrder) {
       throw ErrorModel.initWithParams({
@@ -166,8 +167,9 @@ class OrderService {
     const output = await this.repo.updateOrder(msg);
     return output;
   }
+
   async transportOrder(msg) {
-    const { uid, data } = msg;
+    const { uid } = msg;
     const findOrder = await this.repo.findOne('uid', uid);
     if (!findOrder) {
       throw ErrorModel.initWithParams({
@@ -183,8 +185,9 @@ class OrderService {
     const output = await this.repo.updateOrder(msg);
     return output;
   }
+
   async completeOrder(msg) {
-    const { uid, data } = msg;
+    const { uid } = msg;
     data.deliveryDate = moment(new Date()).format('YYYY/MM/DD');
     const findOrder = await this.repo.findOne('uid', uid);
     if (!findOrder) {
