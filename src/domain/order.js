@@ -43,6 +43,7 @@ class OrderService {
     this.repoProduct = repoProduct;
     this.repoUser = repoUser;
   }
+
   async create(data) {
     data.uid = ulid();
     data.orderCode = await this.repo.generateOrderCode();
@@ -64,6 +65,7 @@ class OrderService {
     );
     return output;
   }
+
   async createOrderAdmin(data) {
     data.uid = ulid();
     data.orderCode = await this.repo.generateOrderCode();
@@ -77,6 +79,7 @@ class OrderService {
     const output = await this.repo.create(data);
     return output;
   }
+
   async updateOrder(msg) {
     const { uid, data } = msg;
     const findOrder = await this.repo.findOne('uid', uid);
@@ -95,10 +98,12 @@ class OrderService {
     const output = await this.repo.updateOrder(msg);
     return output;
   }
+
   async searchOrder(data) {
     const output = await this.repo.search(data);
     return output;
   }
+
   async viewOrderById(uid) {
     const findOrder = await this.repo.findOne('uid', uid);
     if (!findOrder) {
@@ -126,8 +131,9 @@ class OrderService {
     };
     return output;
   }
+
   async approveOrder(msg) {
-    const { uid, data } = msg;
+    const { uid } = msg;
     const findOrder = await this.repo.findOne('uid', uid);
     if (!findOrder) {
       throw ErrorModel.initWithParams({

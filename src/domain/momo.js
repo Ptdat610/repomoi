@@ -1,12 +1,7 @@
 const MomoPayment = require('momo-payment-sdk');
 
-/* HOST_WEBHOOK => MoMo system will call to your URL for alert the result */
 const HOST_WEBHOOK = process.env.HOST_WEBHOOK;
 
-/*
- constructor: partnerCode, accessKey, secretKey => provided from Momo
- constructor: environment = "live" || "sandbox"
-*/
 class MomoPaymentService {
   constructor(partnerCode, accessKey, secretKey, environment) {
     this.momoPayment = new MomoPayment({
@@ -17,7 +12,6 @@ class MomoPaymentService {
     });
   }
 
-  /* Return the URL payment by QR code */
   async createPayment({
     orderId,
     amount,
@@ -43,7 +37,6 @@ class MomoPaymentService {
     }
   }
 
-  /* Rollback the transaction */
   async refundPayment({ requestId, orderId, amount, transId }) {
     try {
       if (!orderId || !amount || !transId) {
@@ -62,7 +55,6 @@ class MomoPaymentService {
     }
   }
 
-  /* The function for verify webhook request */
   verifySignature({
     signature,
     requestId,

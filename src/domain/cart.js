@@ -103,8 +103,9 @@ class CartService {
       return ret;
     }
   }
+  
   async viewCart(customerId) {
-    const findCart = await this.repo.findOne('customerId', customerId);
+    const findCart = await this.repo.findOne(customerId);
     if (!findCart) {
       throw ErrorModel.initWithParams({
         ...ERROR.VALIDATION.NOT_FOUND,
@@ -113,10 +114,7 @@ class CartService {
     const listProduct = [];
     if (findCart.product.length > 0) {
       for (let i = 0; i < findCart.product.length; i++) {
-        const findProduct = await this.repoProduct.findOne(
-          'uid',
-          findCart.product[i].productId,
-        );
+        const findProduct = await this.repoProduct.findOne(findCart.product[i].productId );
         listProduct.push({
           productId: findProduct.uid,
           name: findProduct.name,
@@ -127,11 +125,11 @@ class CartService {
         });
       }
     }
-    findCart.product = listProduct;
-    return findCart;
+    return product = listProduct;
   }
+
   async deleteCart(customerId, uid) {
-    const findCart = await this.repo.findOne('customerId', customerId);
+    const findCart = await this.repo.findOne( customerId);
     if (!findCart) {
       throw ErrorModel.initWithParams({
         ...ERROR.VALIDATION.NOT_FOUND,

@@ -14,7 +14,7 @@ const { ErrorModel } = require('../models');
 const { ERROR } = require('../constants');
 const { } = require('../libs/utils');
 
-const defaultOpts = {};
+const defaultOpts = {}
 
 class BrandService {
     /**
@@ -50,6 +50,7 @@ class BrandService {
         const output = await this.repo.createOne(data);
         return output;
     }
+
     async updateBrand(msg) {
         const { uid } = msg;
         const findBrand = await this.repo.findOne('uid');
@@ -61,6 +62,7 @@ class BrandService {
         const output = await this.repo.updateBrandById(msg);
         return output;
     }
+
     async viewBrandById(uid) {
         const findBrand = await this.repo.findOne('uid', uid);
         if (!findBrand) {
@@ -70,6 +72,7 @@ class BrandService {
         }
         return findBrand;
     }
+
     async deleteBrandById(uid) {
         const findBrand = await this.repo.findOne('uid', uid);
         if (!findBrand) {
@@ -84,6 +87,7 @@ class BrandService {
             return false;
         }
     }
+
     async updateStatusBrand(msg) {
         const { uid } = msg;
         const findBrand = await this.repo.findOne('uid');
@@ -95,6 +99,7 @@ class BrandService {
         const output = await this.repo.updateBrandById(msg);
         return output;
     }
+    
     async searchBrand(data) {
         const output = await this.repo.search(data);
         return output;

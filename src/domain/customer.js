@@ -36,6 +36,7 @@ class CustomerService {
     this.repoOrder = repoOrder;
     this.repoCart = repoCart;
   }
+
   async create(data) {
     const coll = await this.repo.findCustomer(
       {
@@ -57,6 +58,7 @@ class CustomerService {
     const output = await this.repo.createOne(data);
     return output;
   }
+
   async updateCustomer(msg) {
     const { uid } = msg;
     const coll = await this.repo.findCustomer(
@@ -93,9 +95,9 @@ class CustomerService {
         ...ERROR.VALIDATION.NOT_FOUND,
       });
     }
-    findCustomer.password = HashToText(findCustomer.password);
-    return findCustomer;
+    return password = HashToText(findCustomer.password);
   }
+
   async deleteCustomerById(uid) {
     const findCustomer = await this.repo.findOne('uid', uid);
     if (!findCustomer) {
@@ -112,7 +114,7 @@ class CustomerService {
   }
   async updateStatusCustomer(msg) {
     const { uid } = msg;
-    const findCustomer = await this.repo.findOne('uid', uid);
+    const findCustomer = await this.repo.findOne(uid);
     if (!findCustomer) {
       throw ErrorModel.initWithParams({
         ...ERROR.VALIDATION.NOT_FOUND,
@@ -145,6 +147,7 @@ class CustomerService {
     const token = await this.generateCode(customer);
     return { customer, token };
   }
+
   async generateCode(data) {
     return JWT.sign(
       {
@@ -156,6 +159,7 @@ class CustomerService {
       process.env.JWT_KEY,
     );
   }
+  
   async auth(req, res, next) {
     if (req.header('Authorization') == '') {
       res.status(401).send({ error: 'Request null' });
