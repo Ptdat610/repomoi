@@ -9,7 +9,7 @@ const { ERROR } = require('../constants');
 const defaultOpts = {};
 
 /**
- * PolicyService
+ 
  */
 class PolicyService {
   /**
@@ -22,8 +22,6 @@ class PolicyService {
     this.opts = defaultsDeep(opts, defaultOpts);
     this.redis = redis;
   }
-
-  /* ------------------------------- Check Auth ------------------------------- */
   /**
    * @param  {String} role
    * @param  {String} route

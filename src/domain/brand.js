@@ -1,6 +1,6 @@
 'use strict';
 /**
- * @typedef {import("./policy")} PolicyService
+ * @typedef {import("./Policy")} PolicyService
  * @typedef {import("../data/product_repository")} productRepository
  * @typedef {import("../data/customer_repository")} customerRepository
  * @typedef {import("../data/order_repository")} orderRepository
@@ -9,15 +9,15 @@
  */
 const { defaultsDeep } = require('lodash');
 const { ulid } = require('ulid');
+
 const { ErrorModel } = require('../models');
-const { ERROR, ROUTE, LOGS } = require('../constants');
-const { Utils } = require('../libs/utils');
+const { ERROR } = require('../constants');
+const { } = require('../libs/utils');
 
 const defaultOpts = {};
 
 class BrandService {
     /**
-     *
      * @param {*} opts
      * @param {PolicyService} policy
      * @param {productRepository} repoProduct
@@ -51,8 +51,8 @@ class BrandService {
         return output;
     }
     async updateBrand(msg) {
-        const { uid, data } = msg;
-        const findBrand = await this.repo.findOne('uid', uid);
+        const { uid } = msg;
+        const findBrand = await this.repo.findOne('uid');
         if (!findBrand) {
             throw ErrorModel.initWithParams({
                 ...ERROR.VALIDATION.NOT_FOUND,
@@ -86,7 +86,7 @@ class BrandService {
     }
     async updateStatusBrand(msg) {
         const { uid } = msg;
-        const findBrand = await this.repo.findOne('uid', uid);
+        const findBrand = await this.repo.findOne('uid');
         if (!findBrand) {
             throw ErrorModel.initWithParams({
                 ...ERROR.VALIDATION.NOT_FOUND,

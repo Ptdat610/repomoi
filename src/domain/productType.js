@@ -1,6 +1,6 @@
 'use strict';
 /**
- * @typedef {import("./policy")} PolicyService
+ * @typedef {import("./Policy")} PolicyService
  * @typedef {import("../data/productType_repository")} productTypeRepository
  * @typedef {import("../data/product_repository")} productRepository
  */
